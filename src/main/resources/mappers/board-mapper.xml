@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+
+    <insert id="insertBoard">
+        insert into BOARD (category, brand, product, title, content, rating, writer)
+        value
+        (#{category}, #{brand}, #{product}, #{title}, #{content}, #{rating}, #{writer})
+    </insert>
+
+    <update id="updateBoard">
+        update BOARD
+        set category=#{category}, brand=#{brand}, product=#{product}, title=#{title}, content=#{content}, rating=#{rating}, writer=#{writer}, category=#{category}
+        where seq=#{seq}
+    </update>
+
+    <delete id="deleteBoard">
+        delete from BOARD where seq=#{seq}
+    </delete>
+
+    <select id="getBoard" resultType="board">
+        select * from BOARD where seq=#{seq}
+    </select>
+
+    <select id="getBoardList" resultType="board">
+        select * from BOARD order by seq desc
+    </select>
+</mapper>
